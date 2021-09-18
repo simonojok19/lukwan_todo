@@ -41,7 +41,6 @@ fun DisplayTasks(
     LazyColumn {
         items(items = tasks, key = { task -> task.id }) { task: TodoTask ->
             TaskItem(todoTask = task, onTaskClick = onTaskClick)
-
         }
     }
 }
