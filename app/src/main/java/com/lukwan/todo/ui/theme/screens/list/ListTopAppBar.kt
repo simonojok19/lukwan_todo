@@ -1,21 +1,23 @@
 package com.lukwan.todo.ui.theme.screens.list
 
+import androidx.compose.foundation.layout.fillMaxWidth
+import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
 import androidx.compose.material.*
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.Search
 import androidx.compose.runtime.*
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.draw.alpha
+import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.res.stringResource
+import androidx.compose.ui.text.TextStyle
 import androidx.compose.ui.tooling.preview.Preview
 import com.lukwan.todo.R
 import com.lukwan.todo.components.PriorityItem
 import com.lukwan.todo.data.models.Priority
-import com.lukwan.todo.ui.theme.LARGE_PADDING
-import com.lukwan.todo.ui.theme.Typography
-import com.lukwan.todo.ui.theme.topAppBarBackgroundColor
-import com.lukwan.todo.ui.theme.topAppBarContentColor
+import com.lukwan.todo.ui.theme.*
 
 @Composable
 fun ListTopAppBar(
@@ -23,11 +25,12 @@ fun ListTopAppBar(
     onSortClick: (priority: Priority) -> Unit,
     onDeleteClick: () -> Unit
 ) {
-    DefaultListTopAppBar(
-        onSearchClick = onSearchClick,
-        onSortClick = onSortClick,
-        onDeleteClick = onDeleteClick
-    )
+//    DefaultListTopAppBar(
+//        onSearchClick = onSearchClick,
+//        onSortClick = onSortClick,
+//        onDeleteClick = onDeleteClick
+//    )
+    SearchAppBar(text = "", onTextChange = {}, onCloseClicked = { }, onSearchClick = {})
 }
 
 @Composable
@@ -139,6 +142,53 @@ fun DeleteAllAction(
             }
         }
     }
+}
+
+@Composable
+fun SearchAppBar(
+    text: String,
+    onTextChange: (text: String) -> Unit,
+    onCloseClicked: () -> Unit,
+    onSearchClick: () -> Unit
+) {
+
+    Surface(
+        modifier = Modifier
+            .fillMaxWidth()
+            .height(TOP_APP_BAR_HEIGHT),
+        elevation = AppBarDefaults.TopAppBarElevation,
+        color = MaterialTheme.colors.topAppBarBackgroundColor
+    ) {
+        TextField(
+            value = text, onValueChange = onTextChange, modifier = Modifier.fillMaxWidth(),
+            placeholder = {
+                Text(text = "Search", color = Color.White)
+            },
+            textStyle = TextStyle(
+                color = MaterialTheme.colors.topAppBarContentColor,
+                fontSize = MaterialTheme.typography.subtitle1.fontSize
+            ),
+            singleLine = true,
+            leadingIcon = {
+                IconButton(onClick = {}) {
+                    Icon(
+                        imageVector = Icons.Filled.Search,
+                        contentDescription = "Search Icon",
+                        tint = MaterialTheme.colors.topAppBarContentColor,
+                        modifier = Modifier.alpha(ContentAlpha.disabled)
+                    )
+                }
+            }
+        )
+    }
+
+}
+
+
+@Composable
+@Preview
+fun SearchAppBarPreview() {
+    SearchAppBar(text = "", onTextChange = {}, onCloseClicked = { /*TODO*/ }, onSearchClick = {})
 }
 
 @Composable
