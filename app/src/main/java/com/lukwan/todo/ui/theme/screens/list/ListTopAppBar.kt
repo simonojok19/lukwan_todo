@@ -14,22 +14,23 @@ import com.lukwan.todo.ui.theme.topAppBarBackgroundColor
 import com.lukwan.todo.ui.theme.topAppBarContentColor
 
 @Composable
-fun ListTopAppBar(onSearchClick: () -> Unit) {
-    DefaultListTopAppBar(onSearchClick = onSearchClick)
+fun ListTopAppBar(onSearchClick: () -> Unit, onSortClick: (priority: Priority) -> Unit) {
+    DefaultListTopAppBar(onSearchClick = onSearchClick, onSortClick = onSortClick)
 }
 
 @Composable
-fun DefaultListTopAppBar(onSearchClick: () -> Unit) {
+fun DefaultListTopAppBar(onSearchClick: () -> Unit, onSortClick: (priority: Priority) -> Unit) {
     TopAppBar(title = {
         Text(text = "Tasks", color = MaterialTheme.colors.topAppBarContentColor)
     }, backgroundColor = MaterialTheme.colors.topAppBarBackgroundColor, actions = {
-        ListAppBarActions(onSearchClick = onSearchClick)
+        ListAppBarActions(onSearchClick = onSearchClick, onSortClick = onSortClick)
     })
 }
 
 @Composable
-fun ListAppBarActions(onSearchClick: () -> Unit) {
+fun ListAppBarActions(onSearchClick: () -> Unit, onSortClick: (priority: Priority) -> Unit) {
     SearchAction(onSearchClick = onSearchClick)
+    SortAction(onSortClick = onSortClick)
 }
 
 @Composable
@@ -85,6 +86,6 @@ fun SortAction(
 @Composable
 @Preview
 fun DefaultListTopAppBarPreview() {
-    DefaultListTopAppBar(onSearchClick = {})
+    DefaultListTopAppBar(onSearchClick = {}, onSortClick = {})
 }
 
