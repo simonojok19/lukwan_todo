@@ -24,19 +24,28 @@ import com.lukwan.todo.R
 import com.lukwan.todo.components.PriorityItem
 import com.lukwan.todo.data.models.Priority
 import com.lukwan.todo.ui.theme.*
+import com.lukwan.todo.ui.theme.viewmodels.SharedViewModel
+import com.lukwan.todo.utils.SearchAppBarState
 
 @Composable
 fun ListTopAppBar(
-    onSearchClick: () -> Unit,
-    onSortClick: (priority: Priority) -> Unit,
-    onDeleteClick: () -> Unit
+    sharedViewModel: SharedViewModel,
+    searchAppBarState: SearchAppBarState,
+    searchTextState: String
 ) {
-//    DefaultListTopAppBar(
-//        onSearchClick = onSearchClick,
-//        onSortClick = onSortClick,
-//        onDeleteClick = onDeleteClick
-//    )
-    SearchAppBar(text = "", onTextChange = {}, onCloseClicked = { }, onSearchClick = {})
+    when (searchAppBarState) {
+        SearchAppBarState.CLOSED -> {
+            DefaultListTopAppBar(
+                onSearchClick = onSearchClick,
+                onSortClick = onSortClick,
+                onDeleteClick = onDeleteClick
+            )
+        }
+        else -> {
+            SearchAppBar(text = "", onTextChange = {}, onCloseClicked = { }, onSearchClick = {})
+        }
+
+    }
 }
 
 @Composable
