@@ -5,6 +5,8 @@ import androidx.compose.material.Text
 import androidx.compose.material.TopAppBar
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.tooling.preview.Preview
+import com.lukwan.todo.ui.theme.topAppBarBackgroundColor
+import com.lukwan.todo.ui.theme.topAppBarContentColor
 
 @Composable
 fun ListTopAppBar() {
@@ -14,8 +16,8 @@ fun ListTopAppBar() {
 @Composable
 fun DefaultListTopAppBar() {
     TopAppBar(title = {
-        Text(text = "Tasks")
-    }, backgroundColor = MaterialTheme.colors.primary)
+        Text(text = "Tasks", color = MaterialTheme.colors.topAppBarContentColor)
+    }, backgroundColor = MaterialTheme.colors.topAppBarBackgroundColor)
 }
 
 @Composable
