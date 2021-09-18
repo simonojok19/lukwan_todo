@@ -7,6 +7,7 @@ import androidx.compose.runtime.Composable
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.tooling.preview.Preview
 import com.lukwan.todo.R
+import com.lukwan.todo.data.models.Priority
 import com.lukwan.todo.ui.theme.topAppBarBackgroundColor
 import com.lukwan.todo.ui.theme.topAppBarContentColor
 
@@ -40,6 +41,13 @@ fun SearchAction(
             tint = MaterialTheme.colors.topAppBarContentColor,
         )
     }
+}
+
+@Composable
+fun SortAction(
+    onSortClick: (priority: Priority) -> Unit
+) {
+
 }
 
 @Composable
