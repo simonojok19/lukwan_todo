@@ -2,9 +2,11 @@ package com.lukwan.todo.data.repositories
 
 import com.lukwan.todo.data.TodoDao
 import com.lukwan.todo.data.models.TodoTask
+import dagger.hilt.android.scopes.ViewModelScoped
 import kotlinx.coroutines.flow.Flow
 import javax.inject.Inject
 
+@ViewModelScoped
 class TodoRepository @Inject constructor(
     private val todoDao: TodoDao
 ) {
