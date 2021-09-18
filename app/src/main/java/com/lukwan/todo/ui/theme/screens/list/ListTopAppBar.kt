@@ -5,6 +5,7 @@ import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
 import androidx.compose.material.*
 import androidx.compose.material.icons.Icons
+import androidx.compose.material.icons.filled.Close
 import androidx.compose.material.icons.filled.Search
 import androidx.compose.runtime.*
 import androidx.compose.ui.Modifier
@@ -162,7 +163,11 @@ fun SearchAppBar(
         TextField(
             value = text, onValueChange = onTextChange, modifier = Modifier.fillMaxWidth(),
             placeholder = {
-                Text(text = "Search", color = Color.White)
+                Text(
+                    text = "Search...",
+                    color = Color.White,
+                    modifier = Modifier.alpha(ContentAlpha.medium),
+                )
             },
             textStyle = TextStyle(
                 color = MaterialTheme.colors.topAppBarContentColor,
@@ -176,6 +181,15 @@ fun SearchAppBar(
                         contentDescription = "Search Icon",
                         tint = MaterialTheme.colors.topAppBarContentColor,
                         modifier = Modifier.alpha(ContentAlpha.disabled)
+                    )
+                }
+            },
+            trailingIcon = {
+                IconButton(onClick = onCloseClicked) {
+                    Icon(
+                        imageVector = Icons.Filled.Close,
+                        contentDescription = "Close Icon",
+                        tint = MaterialTheme.colors.topAppBarContentColor
                     )
                 }
             }
