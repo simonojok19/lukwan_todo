@@ -54,7 +54,7 @@ fun TaskItem(
             Row {
                 Text(
                     text = todoTask.title, color = MaterialTheme.colors.taskItemTextColor,
-                    style = MaterialTheme.typography.h5,
+                    style = MaterialTheme.typography.h6,
                     fontWeight = FontWeight.Bold,
                     maxLines = 1,
                     overflow = TextOverflow.Ellipsis,
