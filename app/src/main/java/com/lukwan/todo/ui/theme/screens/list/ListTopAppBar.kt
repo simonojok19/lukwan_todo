@@ -4,13 +4,15 @@ import androidx.compose.material.*
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.Search
 import androidx.compose.runtime.Composable
+import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.tooling.preview.Preview
+import com.lukwan.todo.R
 import com.lukwan.todo.ui.theme.topAppBarBackgroundColor
 import com.lukwan.todo.ui.theme.topAppBarContentColor
 
 @Composable
-fun ListTopAppBar() {
-    DefaultListTopAppBar()
+fun ListTopAppBar(onSearchClick: () -> Unit) {
+    DefaultListTopAppBar(onSearchClick = onSearchClick)
 }
 
 @Composable
@@ -34,7 +36,7 @@ fun SearchAction(
     IconButton(onClick = onSearchClick) {
         Icon(
             imageVector = Icons.Filled.Search,
-            contentDescription = "Search Tasks",
+            contentDescription = stringResource(id = R.string.search_button_description),
             tint = MaterialTheme.colors.topAppBarContentColor,
         )
     }

@@ -18,7 +18,7 @@ fun ListScreen(
     navigateToTaskScreen: (id: Int) -> Unit
 ) {
     Scaffold(
-        topBar = { ListTopAppBar() },
+        topBar = { ListTopAppBar(onSearchClick = {}) },
         floatingActionButton = {
             ListFab(onFabClick = navigateToTaskScreen)
         }
