@@ -5,10 +5,12 @@ import androidx.navigation.NavType
 import androidx.navigation.compose.composable
 import androidx.navigation.compose.navArgument
 import com.lukwan.todo.ui.theme.screens.list.ListScreen
+import com.lukwan.todo.ui.theme.viewmodels.SharedViewModel
 import com.lukwan.todo.utils.Constants
 
 fun NavGraphBuilder.listComposable(
     navigateToTaskScreen: (id: Int) -> Unit,
+    viewModel: SharedViewModel,
 ) {
     composable(
         route = Constants.LIST_SCREEN,
@@ -16,6 +18,6 @@ fun NavGraphBuilder.listComposable(
             type = NavType.StringArrayType
         })
     ) {
-        ListScreen(navigateToTaskScreen = navigateToTaskScreen)
+        ListScreen(navigateToTaskScreen = navigateToTaskScreen, viewModel = viewModel)
     }
 }

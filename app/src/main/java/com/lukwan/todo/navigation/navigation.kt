@@ -2,17 +2,17 @@ package com.lukwan.todo.navigation
 
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.remember
-import androidx.navigation.NavController
 import androidx.navigation.NavHostController
 import androidx.navigation.compose.NavHost
-import androidx.navigation.compose.rememberNavController
 import com.lukwan.todo.navigation.destinations.listComposable
 import com.lukwan.todo.navigation.destinations.taskComposable
+import com.lukwan.todo.ui.theme.viewmodels.SharedViewModel
 import com.lukwan.todo.utils.Constants
 
 @Composable
 fun SetupNavigation(
     navController: NavHostController,
+    viewModel: SharedViewModel,
 ) {
     val screen = remember(navController) {
         Screens(navController = navController)
@@ -20,11 +20,13 @@ fun SetupNavigation(
 
     NavHost(navController = navController, startDestination = Constants.LIST_SCREEN) {
         listComposable(
-            navigateToTaskScreen = screen.task
+            navigateToTaskScreen = screen.task,
+            viewModel = viewModel
         )
 
         taskComposable(
-            navigateToListScreen = screen.list
+            navigateToListScreen = screen.list,
+            viewModel = viewModel
         )
     }
 }

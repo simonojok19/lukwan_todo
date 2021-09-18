@@ -12,10 +12,12 @@ import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.tooling.preview.Preview
 import com.lukwan.todo.R
 import com.lukwan.todo.ui.theme.fabBackgroundColor
+import com.lukwan.todo.ui.theme.viewmodels.SharedViewModel
 
 @Composable
 fun ListScreen(
-    navigateToTaskScreen: (id: Int) -> Unit
+    navigateToTaskScreen: (id: Int) -> Unit,
+    viewModel: SharedViewModel
 ) {
     Scaffold(
         topBar = { ListTopAppBar(onSearchClick = {}, onSortClick = {}, onDeleteClick = {}) },
@@ -23,12 +25,6 @@ fun ListScreen(
             ListFab(onFabClick = navigateToTaskScreen)
         }
     ) {}
-}
-
-@Composable
-@Preview
-private fun ListScreenPreview() {
-    ListScreen(navigateToTaskScreen = {})
 }
 
 @Composable
