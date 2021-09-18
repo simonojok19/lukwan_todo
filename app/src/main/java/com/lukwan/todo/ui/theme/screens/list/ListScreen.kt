@@ -40,7 +40,7 @@ fun ListScreen(
             ListFab(onFabClick = navigateToTaskScreen)
         },
         content = { ListContent(
-            tasks = allTasks,
+            requestState = allTasks,
             onTaskClick = {}
         ) }
     )

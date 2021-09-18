@@ -18,18 +18,22 @@ import androidx.compose.ui.tooling.preview.Preview
 import com.lukwan.todo.data.models.Priority
 import com.lukwan.todo.data.models.TodoTask
 import com.lukwan.todo.ui.theme.*
+import com.lukwan.todo.utils.RequestState
 
 @ExperimentalMaterialApi
 @Composable
 fun ListContent(
-    tasks: List<TodoTask>,
+    requestState: RequestState<List<TodoTask>>,
     onTaskClick: (taskId: Int) -> Unit
 ) {
-    if (tasks.isEmpty()) {
-        EmptyContent()
-    } else {
-        DisplayTasks(tasks = tasks, onTaskClick = onTaskClick)
+    if (requestState is RequestState.Success) {
+        if (requestState.data.isEmpty()) {
+            EmptyContent()
+        } else {
+            DisplayTasks(tasks = requestState.data, onTaskClick = onTaskClick)
+        }
     }
+
 }
 
 @ExperimentalMaterialApi
