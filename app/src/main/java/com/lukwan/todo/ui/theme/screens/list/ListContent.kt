@@ -25,6 +25,19 @@ fun ListContent(
     tasks: List<TodoTask>,
     onTaskClick: (taskId: Int) -> Unit
 ) {
+    if (tasks.isEmpty()) {
+        EmptyContent()
+    } else {
+        DisplayTasks(tasks = tasks, onTaskClick = onTaskClick)
+    }
+}
+
+@ExperimentalMaterialApi
+@Composable
+fun DisplayTasks(
+    tasks: List<TodoTask>,
+    onTaskClick: (taskId: Int) -> Unit
+) {
     LazyColumn {
         items(items = tasks, key = { task -> task.id }) { task: TodoTask ->
             TaskItem(todoTask = task, onTaskClick = onTaskClick)

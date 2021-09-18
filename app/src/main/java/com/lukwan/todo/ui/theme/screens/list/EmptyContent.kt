@@ -28,7 +28,8 @@ fun EmptyContent() {
         Icon(
             painter = painterResource(id = R.drawable.ic_sad_face),
             contentDescription = stringResource(id = R.string.sad_face_icon),
-            modifier = Modifier.size(120.dp)
+            modifier = Modifier.size(120.dp),
+            tint = MediumGray
         )
         Text(
             text = stringResource(id = R.string.no_task_found), color = MediumGray,
