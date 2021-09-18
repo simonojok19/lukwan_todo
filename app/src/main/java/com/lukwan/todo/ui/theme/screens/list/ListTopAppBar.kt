@@ -3,6 +3,8 @@ package com.lukwan.todo.ui.theme.screens.list
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
+import androidx.compose.foundation.text.KeyboardActions
+import androidx.compose.foundation.text.KeyboardOptions
 import androidx.compose.material.*
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.Close
@@ -14,6 +16,9 @@ import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.TextStyle
+import androidx.compose.ui.text.input.ImeAction
+import androidx.compose.ui.text.input.KeyboardCapitalization
+import androidx.compose.ui.text.input.KeyboardType
 import androidx.compose.ui.tooling.preview.Preview
 import com.lukwan.todo.R
 import com.lukwan.todo.components.PriorityItem
@@ -150,7 +155,7 @@ fun SearchAppBar(
     text: String,
     onTextChange: (text: String) -> Unit,
     onCloseClicked: () -> Unit,
-    onSearchClick: () -> Unit
+    onSearchClick: (query: String) -> Unit
 ) {
 
     Surface(
@@ -192,7 +197,18 @@ fun SearchAppBar(
                         tint = MaterialTheme.colors.topAppBarContentColor
                     )
                 }
-            }
+            },
+            keyboardOptions = KeyboardOptions(
+                imeAction = ImeAction.Search,
+                autoCorrect = false,
+                keyboardType = KeyboardType.Text,
+                capitalization = KeyboardCapitalization.None
+            ),
+            keyboardActions = KeyboardActions(
+                onSearch = {
+                    onSearchClick(text)
+                }
+            )
         )
     }
 
