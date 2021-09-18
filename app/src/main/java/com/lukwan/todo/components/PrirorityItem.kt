@@ -2,6 +2,7 @@ package com.lukwan.todo.components
 
 import androidx.compose.foundation.Canvas
 import androidx.compose.foundation.layout.Row
+import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
 import androidx.compose.material.MaterialTheme
 import androidx.compose.material.Text
@@ -23,6 +24,7 @@ fun PriorityItem(priority: Priority) {
             text = priority.name,
             style = Typography.subtitle1,
             color = MaterialTheme.colors.onSurface,
+            modifier = Modifier.padding(start = 12.dp)
         )
     }
 }
