@@ -1,5 +1,6 @@
 package com.lukwan.todo.navigation
 
+import androidx.compose.material.ExperimentalMaterialApi
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.remember
 import androidx.navigation.NavHostController
@@ -9,6 +10,7 @@ import com.lukwan.todo.navigation.destinations.taskComposable
 import com.lukwan.todo.ui.theme.viewmodels.SharedViewModel
 import com.lukwan.todo.utils.Constants
 
+@ExperimentalMaterialApi
 @Composable
 fun SetupNavigation(
     navController: NavHostController,

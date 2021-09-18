@@ -1,10 +1,7 @@
 package com.lukwan.todo.ui.theme.screens.list
 
 import android.util.Log
-import androidx.compose.material.FloatingActionButton
-import androidx.compose.material.Icon
-import androidx.compose.material.MaterialTheme
-import androidx.compose.material.Scaffold
+import androidx.compose.material.*
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.Add
 import androidx.compose.runtime.*
@@ -16,6 +13,7 @@ import com.lukwan.todo.ui.theme.fabBackgroundColor
 import com.lukwan.todo.ui.theme.viewmodels.SharedViewModel
 import com.lukwan.todo.utils.SearchAppBarState
 
+@ExperimentalMaterialApi
 @Composable
 fun ListScreen(
     navigateToTaskScreen: (id: Int) -> Unit,
@@ -28,7 +26,7 @@ fun ListScreen(
 
     val searchAppBarState: SearchAppBarState by viewModel.searchAppBarState
     val searchTextState: String by viewModel.searchTextState
-    val allTasks = viewModel.allTasks.collectAsState()
+    val allTasks by viewModel.allTasks.collectAsState()
 
     Scaffold(
         topBar = {
@@ -41,7 +39,10 @@ fun ListScreen(
         floatingActionButton = {
             ListFab(onFabClick = navigateToTaskScreen)
         },
-        content = { ListContent() }
+        content = { ListContent(
+            tasks = allTasks,
+            onTaskClick = {}
+        ) }
     )
 }
 

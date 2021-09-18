@@ -1,5 +1,6 @@
 package com.lukwan.todo.navigation.destinations
 
+import androidx.compose.material.ExperimentalMaterialApi
 import androidx.navigation.NavGraphBuilder
 import androidx.navigation.NavType
 import androidx.navigation.compose.composable
@@ -8,6 +9,7 @@ import com.lukwan.todo.ui.theme.screens.list.ListScreen
 import com.lukwan.todo.ui.theme.viewmodels.SharedViewModel
 import com.lukwan.todo.utils.Constants
 
+@ExperimentalMaterialApi
 fun NavGraphBuilder.listComposable(
     navigateToTaskScreen: (id: Int) -> Unit,
     viewModel: SharedViewModel,
