@@ -2,6 +2,8 @@ package com.lukwan.todo.ui.theme.screens.list
 
 import androidx.compose.foundation.Canvas
 import androidx.compose.foundation.layout.*
+import androidx.compose.foundation.lazy.LazyColumn
+import androidx.compose.foundation.lazy.items
 import androidx.compose.material.ExperimentalMaterialApi
 import androidx.compose.material.MaterialTheme
 import androidx.compose.material.Surface
@@ -17,8 +19,18 @@ import com.lukwan.todo.data.models.Priority
 import com.lukwan.todo.data.models.TodoTask
 import com.lukwan.todo.ui.theme.*
 
+@ExperimentalMaterialApi
 @Composable
-fun ListContent() {
+fun ListContent(
+    tasks: List<TodoTask>,
+    onTaskClick: (taskId: Int) -> Unit
+) {
+    LazyColumn {
+        items(items = tasks, key = { task -> task.id }) { task: TodoTask ->
+            TaskItem(todoTask = task, onTaskClick = onTaskClick)
+
+        }
+    }
 }
 
 @ExperimentalMaterialApi

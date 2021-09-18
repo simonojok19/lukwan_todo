@@ -1,14 +1,13 @@
 package com.lukwan.todo.ui.theme.screens.list
 
+import android.util.Log
 import androidx.compose.material.FloatingActionButton
 import androidx.compose.material.Icon
 import androidx.compose.material.MaterialTheme
 import androidx.compose.material.Scaffold
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.Add
-import androidx.compose.runtime.Composable
-import androidx.compose.runtime.getValue
-import androidx.compose.runtime.setValue
+import androidx.compose.runtime.*
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.tooling.preview.Preview
@@ -22,8 +21,15 @@ fun ListScreen(
     navigateToTaskScreen: (id: Int) -> Unit,
     viewModel: SharedViewModel
 ) {
+    LaunchedEffect(key1 = true) {
+        Log.d("ListScreen", "Launched Effect")
+        viewModel.getAllTasks();
+    }
+
     val searchAppBarState: SearchAppBarState by viewModel.searchAppBarState
     val searchTextState: String by viewModel.searchTextState
+    val allTasks = viewModel.allTasks.collectAsState()
+
     Scaffold(
         topBar = {
             ListTopAppBar(
