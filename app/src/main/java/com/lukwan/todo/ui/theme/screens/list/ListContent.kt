@@ -39,7 +39,7 @@ fun TaskItem(
                 .fillMaxWidth()
                 .padding(all = LARGE_PADDING),
         ) {
-            Row(verticalAlignment = Alignment.CenterVertically) {
+            Row {
                 Text(
                     text = todoTask.title, color = MaterialTheme.colors.taskItemTextColor,
                     style = MaterialTheme.typography.h5,
@@ -51,7 +51,8 @@ fun TaskItem(
                 Box(
                     modifier = Modifier
                         .fillMaxWidth()
-                        .weight(1f)
+                        .weight(1f),
+                    contentAlignment = Alignment.TopEnd
                 ) {
                     Canvas(
                         modifier = Modifier
