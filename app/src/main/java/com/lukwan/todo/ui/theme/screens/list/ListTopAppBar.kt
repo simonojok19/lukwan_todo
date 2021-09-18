@@ -17,7 +17,9 @@ fun ListTopAppBar() {
 fun DefaultListTopAppBar() {
     TopAppBar(title = {
         Text(text = "Tasks", color = MaterialTheme.colors.topAppBarContentColor)
-    }, backgroundColor = MaterialTheme.colors.topAppBarBackgroundColor)
+    }, backgroundColor = MaterialTheme.colors.topAppBarBackgroundColor, actions = {
+
+    })
 }
 
 @Composable
