@@ -123,6 +123,7 @@ fun DeleteAllAction(
             contentDescription = stringResource(
                 id = R.string.delete_all_action,
             ),
+            tint = MaterialTheme.colors.topAppBarContentColor,
         )
 
         DropdownMenu(expanded = expanded, onDismissRequest = { expanded = false }) {
