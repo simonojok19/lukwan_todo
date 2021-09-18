@@ -36,13 +36,24 @@ fun ListTopAppBar(
     when (searchAppBarState) {
         SearchAppBarState.CLOSED -> {
             DefaultListTopAppBar(
-                onSearchClick = onSearchClick,
-                onSortClick = onSortClick,
-                onDeleteClick = onDeleteClick
+                onSearchClick = {
+                    sharedViewModel.searchAppBarState.value = SearchAppBarState.OPENED
+                },
+                onSortClick = {},
+                onDeleteClick = {}
             )
         }
         else -> {
-            SearchAppBar(text = "", onTextChange = {}, onCloseClicked = { }, onSearchClick = {})
+            SearchAppBar(
+                text = searchTextState,
+                onTextChange = {
+                    sharedViewModel.searchTextState.value = it
+                },
+                onCloseClicked = {
+                    sharedViewModel.searchAppBarState.value = SearchAppBarState.CLOSED
+                    sharedViewModel.searchTextState.value = ""
+                },
+                onSearchClick = {})
         }
 
     }
