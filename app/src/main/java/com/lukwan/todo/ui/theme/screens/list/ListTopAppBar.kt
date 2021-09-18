@@ -26,6 +26,7 @@ import com.lukwan.todo.data.models.Priority
 import com.lukwan.todo.ui.theme.*
 import com.lukwan.todo.ui.theme.viewmodels.SharedViewModel
 import com.lukwan.todo.utils.SearchAppBarState
+import com.lukwan.todo.utils.TrailingIconState
 
 @Composable
 fun ListTopAppBar(
@@ -178,6 +179,10 @@ fun SearchAppBar(
     onSearchClick: (query: String) -> Unit
 ) {
 
+    var trailingIconState by remember {
+        mutableStateOf(TrailingIconState.READY_TO_DELETE)
+    }
+
     Surface(
         modifier = Modifier
             .fillMaxWidth()
@@ -210,7 +215,22 @@ fun SearchAppBar(
                 }
             },
             trailingIcon = {
-                IconButton(onClick = onCloseClicked) {
+                IconButton(onClick = {
+                    when (trailingIconState) {
+                        TrailingIconState.READY_TO_DELETE -> {
+                            onTextChange("")
+                            trailingIconState = TrailingIconState.READY_TO_CLOSE
+                        }
+                        TrailingIconState.READY_TO_CLOSE -> {
+                            if (text.isNotEmpty()) {
+                                onTextChange("")
+                            } else {
+                                onCloseClicked()
+                                trailingIconState = TrailingIconState.READY_TO_DELETE
+                            }
+                        }
+                    }
+                }) {
                     Icon(
                         imageVector = Icons.Filled.Close,
                         contentDescription = "Close Icon",
