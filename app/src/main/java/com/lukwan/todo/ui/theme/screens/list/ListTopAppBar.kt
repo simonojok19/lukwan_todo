@@ -3,10 +3,12 @@ package com.lukwan.todo.ui.theme.screens.list
 import androidx.compose.material.*
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.Search
-import androidx.compose.runtime.Composable
+import androidx.compose.runtime.*
+import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.tooling.preview.Preview
 import com.lukwan.todo.R
+import com.lukwan.todo.components.PriorityItem
 import com.lukwan.todo.data.models.Priority
 import com.lukwan.todo.ui.theme.topAppBarBackgroundColor
 import com.lukwan.todo.ui.theme.topAppBarContentColor
@@ -47,6 +49,36 @@ fun SearchAction(
 fun SortAction(
     onSortClick: (priority: Priority) -> Unit
 ) {
+    var expanded by remember { mutableStateOf(false) }
+    IconButton(onClick = {
+        expanded = true
+    }) {
+        Icon(painter = painterResource(id = R.drawable.filter_a_list), contentDescription = stringResource(
+            id = R.string.sort_button_description
+
+        ),)
+        DropdownMenu(expanded = expanded, onDismissRequest = { expanded = false }) {
+            DropdownMenuItem(onClick = {
+                expanded = false
+                onSortClick(Priority.LOW)
+            }) {
+                PriorityItem(priority = Priority.LOW)
+            }
+            DropdownMenuItem(onClick = {
+                expanded = false
+                onSortClick(Priority.HIGH)
+            }) {
+                PriorityItem(priority = Priority.HIGH)
+            }
+            DropdownMenuItem(onClick = {
+                expanded = false
+                onSortClick(Priority.NONE)
+            }) {
+                PriorityItem(priority = Priority.NONE)
+            }
+
+        }
+    }
 
 }
 
