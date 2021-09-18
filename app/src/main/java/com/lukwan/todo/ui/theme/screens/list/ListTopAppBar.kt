@@ -67,7 +67,10 @@ fun DefaultListTopAppBar(
     onDeleteClick: () -> Unit
 ) {
     TopAppBar(title = {
-        Text(text = "Tasks", color = MaterialTheme.colors.topAppBarContentColor)
+        Text(
+            text = stringResource(id = R.string.task_list_title),
+            color = MaterialTheme.colors.topAppBarContentColor
+        )
     }, backgroundColor = MaterialTheme.colors.topAppBarBackgroundColor, actions = {
         ListAppBarActions(
             onSearchClick = onSearchClick,

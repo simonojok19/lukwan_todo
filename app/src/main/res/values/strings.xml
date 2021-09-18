@@ -6,5 +6,6 @@
     <string name="delete_all_action">Delete All</string>
     <string name="close_icon_description">Close Icon</string>
     <string name="search_icon_description">Search Tasks</string>
-    <string name="search_placeholder">Search...</string>
+    <string name="search_placeholder">Search…</string>
+    <string name="task_list_title">Tasks</string>
 </resources>
