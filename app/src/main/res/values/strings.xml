@@ -12,4 +12,5 @@
     <string name="no_task_found">No Tasks Found</string>
     <string name="add_task">Add Task</string>
     <string name="no_action">No Action</string>
+    <string name="close_icon">Close Icon</string>
 </resources>
