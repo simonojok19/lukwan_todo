@@ -1,5 +1,6 @@
 package com.lukwan.todo.navigation.destinations
 
+import androidx.compose.runtime.LaunchedEffect
 import androidx.compose.runtime.collectAsState
 import androidx.compose.runtime.getValue
 import androidx.navigation.NavGraphBuilder
@@ -26,6 +27,11 @@ fun NavGraphBuilder.taskComposable(
         val taskId = navBackStackEntry.arguments!!.getInt(Constants.TASK_ARGUMENT_KEY)
         viewModel.getSelectedTask(taskId = taskId)
         val selectedTask by viewModel.selectedTask.collectAsState()
+
+        LaunchedEffect(key1 = taskId) {
+            viewModel.updateTaskFields(selectedTask)
+        }
+
         TaskScreen(navigateToListScreen, selectedTask, viewModel)
     }
 }
