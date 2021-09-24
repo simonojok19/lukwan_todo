@@ -41,7 +41,7 @@ fun ListScreen(
         },
         content = { ListContent(
             requestState = allTasks,
-            onTaskClick = {}
+            onTaskClick = navigateToTaskScreen
         ) }
     )
 }
