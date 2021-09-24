@@ -1,9 +1,8 @@
 package com.lukwan.todo.ui.theme.screens.task
 
-import androidx.compose.foundation.layout.Column
-import androidx.compose.foundation.layout.fillMaxSize
-import androidx.compose.foundation.layout.fillMaxWidth
-import androidx.compose.foundation.layout.padding
+import androidx.compose.foundation.background
+import androidx.compose.foundation.layout.*
+import androidx.compose.material.Divider
 import androidx.compose.material.MaterialTheme
 import androidx.compose.material.OutlinedTextField
 import androidx.compose.material.Text
@@ -13,6 +12,7 @@ import androidx.compose.ui.tooling.preview.Preview
 import com.lukwan.todo.components.PriorityDropDown
 import com.lukwan.todo.data.models.Priority
 import com.lukwan.todo.ui.theme.LARGE_PADDING
+import com.lukwan.todo.ui.theme.MEDIUM_PADDING
 import com.lukwan.todo.utils.Constants
 
 @Composable
@@ -28,6 +28,7 @@ fun TaskContent(
     Column(
         modifier = Modifier
             .fillMaxSize()
+            .background(MaterialTheme.colors.background)
             .padding(all = LARGE_PADDING)
     ) {
 
@@ -40,7 +41,11 @@ fun TaskContent(
             singleLine = true
         )
 
+        Divider(modifier = Modifier.height(MEDIUM_PADDING), color = MaterialTheme.colors.background)
+
         PriorityDropDown(priority = priority, onPrioritySelected = onPrioritySelected)
+
+        Spacer(modifier = Modifier.height(MEDIUM_PADDING))
 
         OutlinedTextField(
             modifier = Modifier.fillMaxSize(),
