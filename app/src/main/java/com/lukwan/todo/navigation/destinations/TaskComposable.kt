@@ -1,6 +1,7 @@
 package com.lukwan.todo.navigation.destinations
 
-import android.util.Log
+import androidx.compose.runtime.collectAsState
+import androidx.compose.runtime.getValue
 import androidx.navigation.NavGraphBuilder
 import androidx.navigation.NavType
 import androidx.navigation.compose.composable
@@ -23,7 +24,8 @@ fun NavGraphBuilder.taskComposable(
         )
     ) { navBackStackEntry ->
         val taskId = navBackStackEntry.arguments!!.getInt(Constants.TASK_ARGUMENT_KEY)
-        Log.d("TaskComposable", "taskComposable: Task Id $taskId")
-        TaskScreen(navigateToListScreen)
+        viewModel.getSelectedTask(taskId = taskId)
+        val selectedTask by viewModel.selectedTask.collectAsState()
+        TaskScreen(navigateToListScreen, selectedTask)
     }
 }

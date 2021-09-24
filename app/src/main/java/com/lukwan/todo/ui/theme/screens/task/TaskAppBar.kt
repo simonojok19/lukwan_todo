@@ -18,8 +18,12 @@ import com.lukwan.todo.ui.theme.topAppBarContentColor
 import com.lukwan.todo.utils.Action
 
 @Composable
-fun TaskAppBar() {
-    NewTaskAppBar(navigateToListScreen = {})
+fun TaskAppBar(selectedTask: TodoTask?, navigateToListScreen: (action: Action) -> Unit) {
+    if (selectedTask == null) {
+        NewTaskAppBar(navigateToListScreen)
+    } else {
+        ExistingTaskAppBar(selectedTask, navigateToListScreen)
+    }
 }
 
 @Composable
@@ -111,8 +115,8 @@ fun ExistingTaskAppBar(
         },
         backgroundColor = MaterialTheme.colors.topAppBarBackgroundColor,
         actions = {
-            UpdateAction(onUpdateClicked = navigateToListScreen)
             DeleteAction(onDeleteClicked = navigateToListScreen)
+            UpdateAction(onUpdateClicked = navigateToListScreen)
         }
     )
 }
@@ -120,7 +124,7 @@ fun ExistingTaskAppBar(
 @Preview
 @Composable
 fun NewTaskAppBarPreview() {
-    NewTaskAppBar(navigateToListScreen = {})
+    NewTaskAppBar(navigateToListScreen = {}, selectedTask = selectedTask)
 }
 
 @Preview
