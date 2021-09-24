@@ -124,7 +124,7 @@ fun ExistingTaskAppBar(
 @Preview
 @Composable
 fun NewTaskAppBarPreview() {
-    NewTaskAppBar(navigateToListScreen = {}, selectedTask = selectedTask)
+    NewTaskAppBar(navigateToListScreen = {})
 }
 
 @Preview
