@@ -10,4 +10,6 @@
     <string name="task_list_title">Tasks</string>
     <string name="sad_face_icon">Sad Face Icon</string>
     <string name="no_task_found">No Tasks Found</string>
+    <string name="add_task">Add Task</string>
+    <string name="no_action">No Action</string>
 </resources>
