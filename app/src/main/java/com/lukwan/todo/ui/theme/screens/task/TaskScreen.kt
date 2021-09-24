@@ -7,6 +7,6 @@ import com.lukwan.todo.utils.Action
 
 @Composable
 fun TaskScreen(navigateToListScreen: (action: Action) -> Unit,) {
-    Scaffold(topBar = { NewTaskAppBar(navigateToListScreen = {}) }, content = {})
+    Scaffold(topBar = { NewTaskAppBar(navigateToListScreen = navigateToListScreen) }, content = {})
 }
 
