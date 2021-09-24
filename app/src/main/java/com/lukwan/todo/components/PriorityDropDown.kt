@@ -20,6 +20,7 @@ import androidx.compose.ui.unit.dp
 import com.lukwan.todo.data.models.Priority
 import com.lukwan.todo.ui.theme.PRIORITY_DROP_DOWN_HEIGHT
 import com.lukwan.todo.ui.theme.PRIORITY_INDICATOR_SIZE
+import com.lukwan.todo.ui.theme.SMALL_PADDING
 
 @Composable
 fun PriorityDropDown(
@@ -36,7 +37,8 @@ fun PriorityDropDown(
         .clickable { expanded = true }
         .border(
             width = 1.dp,
-            color = MaterialTheme.colors.onSurface.copy(alpha = ContentAlpha.disabled)
+            color = MaterialTheme.colors.onSurface.copy(alpha = ContentAlpha.disabled),
+            shape = MaterialTheme.shapes.small
         )
         .padding(16.dp), verticalAlignment = Alignment.CenterVertically) {
 
@@ -57,11 +59,11 @@ fun PriorityDropDown(
             .alpha(ContentAlpha.medium)
             .rotate(angle)
             .weight(.15f), onClick = { expanded = true }) {
-            Icon(imageVector = Icons.Filled.ArrowDropDown, contentDescription = null)
+            Icon(imageVector = Icons.Filled.ArrowDropDown, contentDescription = null,Modifier.size(50.dp))
         }
 
         DropdownMenu(
-            modifier = Modifier.fillMaxWidth(),
+            modifier = Modifier.fillMaxWidth().padding(all = SMALL_PADDING),
             expanded = expanded,
             onDismissRequest = { expanded = false }) {
             DropdownMenuItem(onClick = {
