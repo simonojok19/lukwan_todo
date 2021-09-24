@@ -6,6 +6,7 @@ import androidx.compose.material.icons.filled.ArrowBack
 import androidx.compose.material.icons.filled.Check
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.res.stringResource
+import androidx.compose.ui.tooling.preview.Preview
 import com.lukwan.todo.R
 import com.lukwan.todo.ui.theme.topAppBarBackgroundColor
 import com.lukwan.todo.ui.theme.topAppBarContentColor
@@ -13,7 +14,7 @@ import com.lukwan.todo.utils.Action
 
 @Composable
 fun TaskAppBar() {
-
+    NewTaskAppBar(navigateToListScreen = {})
 }
 
 @Composable
@@ -50,4 +51,10 @@ fun AddAction(onAddClick: (action: Action) -> Unit) {
             tint = MaterialTheme.colors.topAppBarContentColor
         )
     }
+}
+
+@Preview
+@Composable
+fun NewTaskAppBarPreview() {
+    NewTaskAppBar(navigateToListScreen = {})
 }

@@ -5,6 +5,7 @@ import androidx.navigation.NavGraphBuilder
 import androidx.navigation.NavType
 import androidx.navigation.compose.composable
 import androidx.navigation.compose.navArgument
+import com.lukwan.todo.ui.theme.screens.task.TaskScreen
 import com.lukwan.todo.ui.theme.viewmodels.SharedViewModel
 import com.lukwan.todo.utils.Action
 import com.lukwan.todo.utils.Constants
@@ -23,6 +24,6 @@ fun NavGraphBuilder.taskComposable(
     ) { navBackStackEntry ->
         val taskId = navBackStackEntry.arguments!!.getInt(Constants.TASK_ARGUMENT_KEY)
         Log.d("TaskComposable", "taskComposable: Task Id $taskId")
-
+        TaskScreen(navigateToListScreen)
     }
 }
