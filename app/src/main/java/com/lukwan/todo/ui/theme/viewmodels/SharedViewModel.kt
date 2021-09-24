@@ -7,9 +7,11 @@ import androidx.lifecycle.viewModelScope
 import com.lukwan.todo.data.models.Priority
 import com.lukwan.todo.data.models.TodoTask
 import com.lukwan.todo.data.repositories.TodoRepository
+import com.lukwan.todo.utils.Constants
 import com.lukwan.todo.utils.RequestState
 import com.lukwan.todo.utils.SearchAppBarState
 import dagger.hilt.android.lifecycle.HiltViewModel
+import kotlinx.coroutines.TimeoutCancellationException
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.StateFlow
 import kotlinx.coroutines.flow.collect
@@ -65,5 +67,15 @@ class SharedViewModel @Inject constructor(
         title.value = task?.title ?: ""
         description.value = task?.description ?: ""
         priority.value = task?.priority ?: Priority.LOW
+    }
+
+    fun updateTitle(newTitle: String) {
+        if (newTitle.length <= Constants.MAX_TITLE_LENGTH) {
+            title.value = newTitle;
+        }
+    }
+
+    fun validateFields(): Boolean {
+        return title.value.isNotEmpty() && description.value.isNotEmpty()
     }
 }
