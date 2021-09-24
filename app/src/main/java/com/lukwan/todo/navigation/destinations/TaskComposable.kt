@@ -1,5 +1,6 @@
 package com.lukwan.todo.navigation.destinations
 
+import android.util.Log
 import androidx.navigation.NavGraphBuilder
 import androidx.navigation.NavType
 import androidx.navigation.compose.composable
@@ -19,5 +20,9 @@ fun NavGraphBuilder.taskComposable(
                 type = NavType.IntType
             },
         )
-    ) {}
+    ) { navBackStackEntry ->
+        val taskId = navBackStackEntry.arguments!!.getInt(Constants.TASK_ARGUMENT_KEY)
+        Log.d("TaskComposable", "taskComposable: Task Id $taskId")
+
+    }
 }
