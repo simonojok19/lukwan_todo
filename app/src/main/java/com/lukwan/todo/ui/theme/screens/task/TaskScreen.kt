@@ -2,12 +2,20 @@ package com.lukwan.todo.ui.theme.screens.task
 
 import androidx.compose.material.Scaffold
 import androidx.compose.runtime.Composable
-import com.lukwan.todo.data.models.Priority
+import androidx.compose.runtime.getValue
 import com.lukwan.todo.data.models.TodoTask
+import com.lukwan.todo.ui.theme.viewmodels.SharedViewModel
 import com.lukwan.todo.utils.Action
 
 @Composable
-fun TaskScreen(navigateToListScreen: (action: Action) -> Unit, selectedTask: TodoTask?) {
+fun TaskScreen(
+    navigateToListScreen: (action: Action) -> Unit,
+    selectedTask: TodoTask?,
+    viewModel: SharedViewModel
+) {
+    val title by viewModel.title
+    val description by viewModel.description
+    val priority by viewModel.priority
 
     Scaffold(topBar = {
         TaskAppBar(
@@ -16,12 +24,12 @@ fun TaskScreen(navigateToListScreen: (action: Action) -> Unit, selectedTask: Tod
         )
     }, content = {
         TaskContent(
-            title = "Pass Turing Interview",
-            onTitleChange = {},
-            description = "I need to pass turing interview so that I can get job of my own and take care of my mum",
-            onDescriptionChange = {},
-            priority = Priority.HIGH,
-            onPrioritySelected = {}
+            title = title,
+            onTitleChange = { viewModel.title.value = it },
+            description = description,
+            onDescriptionChange = { viewModel.description.value = it },
+            priority = priority,
+            onPrioritySelected = { viewModel.priority.value = it }
         )
     })
 }

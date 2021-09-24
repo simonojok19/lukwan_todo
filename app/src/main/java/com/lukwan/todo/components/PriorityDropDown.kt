@@ -63,7 +63,7 @@ fun PriorityDropDown(
         }
 
         DropdownMenu(
-            modifier = Modifier.fillMaxWidth().padding(all = SMALL_PADDING),
+            modifier = Modifier.fillMaxWidth(fraction = 0.9f),
             expanded = expanded,
             onDismissRequest = { expanded = false }) {
             DropdownMenuItem(onClick = {

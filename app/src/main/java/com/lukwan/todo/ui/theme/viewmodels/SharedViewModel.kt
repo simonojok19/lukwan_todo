@@ -4,6 +4,7 @@ import androidx.compose.runtime.MutableState
 import androidx.compose.runtime.mutableStateOf
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
+import com.lukwan.todo.data.models.Priority
 import com.lukwan.todo.data.models.TodoTask
 import com.lukwan.todo.data.repositories.TodoRepository
 import com.lukwan.todo.utils.RequestState
@@ -30,6 +31,11 @@ class SharedViewModel @Inject constructor(
 
     private val _selectedTask: MutableStateFlow<TodoTask?> = MutableStateFlow(null)
     val selectedTask: StateFlow<TodoTask?> = _selectedTask
+
+    val id: MutableState<Int> = mutableStateOf(0)
+    val title: MutableState<String> = mutableStateOf("")
+    val description: MutableState<String> = mutableStateOf("")
+    val priority: MutableState<Priority> = mutableStateOf(Priority.LOW)
 
     fun getAllTasks() {
         _allTasks.value = RequestState.Loading
